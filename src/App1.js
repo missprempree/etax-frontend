@@ -11,15 +11,19 @@ function App() {
     // alert(inputValue+"!"); // Display the input value in an alert
     // You can perform further actions with the input value here
     axios({
-        url: 'http://localhost:9005/api/v1/invoices/'+inputValue+'/download', // replace with your API endpoint
+        // url: 'http://localhost:9005/api/v1/invoices/' + inputValue + '/download', // replace with your API endpoint
+        url: 'https://etax-yatphiroon-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/v1/invoices/'+inputValue+'/download', 
         method: 'GET',
         responseType: 'blob', // important
     }).then((response) => {
-        alert("response data = "+ response.data)
+        if(response.data.size === 0){
+            alert("No data found for the given id : " + inputValue);
+            return false;
+        } 
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement('a');
         link.href = url;
-        link.setAttribute('download', 'invoice'+inputValue+'.xml'); // or any other extension
+        link.setAttribute('download', 'invoice' + inputValue + '.xml'); // or any other extension
         document.body.appendChild(link);
         link.click();
     }).catch(error => console.error('Error downloading file : ',error));
