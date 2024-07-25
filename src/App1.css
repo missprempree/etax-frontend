@@ -1,0 +1,50 @@
+.center {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 80vh; /* 80% of viewport height */
+  padding-top: 10vh; /* 10% of viewport height as padding on top */
+}
+
+.image-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.image-container img {
+  display: block;
+  margin: 1 auto;
+}
+
+.modern-button {
+  background-color: #4CAF50; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 8px 16px; /* Reduced padding */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make the container inline-block */
+  font-size: 14px; /* Smaller font size */
+  margin: 4px 2px; /* Some margin */
+  cursor: pointer; /* Pointer/hand icon */
+  border-radius: 8px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.modern-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+
+.modern-input {
+  padding: 8px 16px; /* Same padding as the button */
+  font-size: 14px; /* Same font size as the button */
+  border: 1px solid #ccc; /* Light grey border */
+  border-radius: 8px; /* Rounded corners */
+  margin: 4px 2px; /* Some margin */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  width: 140px; /* Set a specific width */
+}
