@@ -11,7 +11,6 @@ function App() {
     // alert(inputValue+"!"); // Display the input value in an alert
     // You can perform further actions with the input value here
     axios({
-       // url: 'http://localhost:9005/api/v1/invoices/' + inputValue + '/export', // replace with your API endpoint
         url: 'https://etax-docker-sdg-etax-poc.apps.dc1.test.local/api/v1/invoices/'+inputValue+'/export', 
         method: 'GET',
         responseType: 'blob', // important
