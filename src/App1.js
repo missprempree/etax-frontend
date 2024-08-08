@@ -11,8 +11,7 @@ function App() {
     // alert(inputValue+"!"); // Display the input value in an alert
     // You can perform further actions with the input value here
     axios({
-        // url: 'http://localhost:9005/api/v1/invoices/' + inputValue + '/download', // replace with your API endpoint
-        url: 'https://etax-yatphiroon-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/v1/invoices/'+inputValue+'/download', 
+        url: 'https://etax-docker-sdg-etax-poc.apps.dc1.test.local/api/v1/invoices/'+inputValue+'/export', 
         method: 'GET',
         responseType: 'blob', // important
     }).then((response) => {
