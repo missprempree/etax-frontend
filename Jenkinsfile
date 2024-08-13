@@ -6,15 +6,9 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Build') {
+        stage('Build Image') {
             steps {
-                sh 'npm install'
-                sh 'npm run build'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'oc start-build etax-frontend'
+                sh 'oc start-build -F etax-frontend --from-dir=.'
             }
         }
     }
