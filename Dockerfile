@@ -17,19 +17,29 @@ COPY . .
 RUN npm run build
 
 # Use an official NGINX image to serve the built app
-FROM nginx:latest
+FROM nginx:alpine
 
-# Adjust permissions for Nginx directories
-RUN mkdir -p /var/run/nginx && chown -R nginx:nginx /var/run/nginx
+# Copy the build output to the NGINX html directory
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Ensure NGINX runs with the necessary permissions
+RUN mkdir -p /var/cache/nginx/client_temp /var/cache/nginx/proxy_temp /var/cache/nginx/fastcgi_temp /var/cache/nginx/uwsgi_temp /var/cache/nginx/scgi_temp /var/run/nginx && \
+    chown -R nginx:nginx /var/cache/nginx /usr/share/nginx/html /etc/nginx/conf.d /var/run/nginx
+
+# Remove the user directive from the NGINX configuration
+RUN sed -i '/user  nginx;/d' /etc/nginx/nginx.conf
+
+# Update NGINX to listen on port 8080
+RUN sed -i 's/listen       80;/listen       8080;/g' /etc/nginx/conf.d/default.conf
+
+# Update NGINX to use a different PID file location
+RUN sed -i 's|pid /var/run/nginx.pid;|pid /var/run/nginx/nginx.pid;|g' /etc/nginx/nginx.conf
+
+# Expose port 8080
+EXPOSE 8080
 
 # Run NGINX as the nginx user
 USER nginx
-
-# Copy Nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Expose port
-EXPOSE 80
 
 # Start NGINX server
 CMD ["nginx", "-g", "daemon off;"]
