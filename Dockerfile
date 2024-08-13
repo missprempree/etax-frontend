@@ -27,3 +27,6 @@ EXPOSE 8080
 
 # Start NGINX server
 CMD ["nginx", "-g", "daemon off;"]
+
+LABEL 
+org.opencontainers.image.source=https://github.com/missprempree/etax-frontend
