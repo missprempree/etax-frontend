@@ -20,10 +20,10 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copy the build output to the NGINX html directory
-COPY --from=0 /app/build /usr/share/nginx/html
+COPY --from=builder /usr/src/app/build /app
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 8080
 
 # Start NGINX server
 CMD ["nginx", "-g", "daemon off;"]
