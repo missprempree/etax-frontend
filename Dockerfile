@@ -22,11 +22,16 @@ FROM nginx:alpine
 # Copy the build output to the NGINX html directory
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Ensure NGINX runs with the necessary permissions
-RUN mkdir -p /var/cache/nginx/client_temp && \
-    chown -R nginx:nginx /var/cache/nginx /usr/share/nginx/html
+# Ensure NGINX runs with the necessary permissions 
+#RUN mkdir -p /var/cache/nginx/client_temp && \
+#    chown -R nginx:nginx /var/cache/nginx /usr/share/nginx/html
 #RUN mkdir -p /var/cache/nginx && \
 #    chown -R nginx:nginx /var/cache/nginx /usr/share/nginx/html
+RUN mkdir -p /var/cache/nginx/client_temp /var/cache/nginx/proxy_temp && \
+    chown -R nginx:nginx /var/cache/nginx /usr/share/nginx/html /etc/nginx/conf.d
+
+# Remove the user directive from the NGINX configuration
+RUN sed -i '/user  nginx;/d' /etc/nginx/nginx.conf
 
 # Expose port 80
 EXPOSE 8080
