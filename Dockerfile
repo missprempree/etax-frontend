@@ -29,10 +29,14 @@ RUN mkdir -p /var/cache/nginx/client_temp /var/cache/nginx/proxy_temp /var/cache
 # Remove the user directive from the NGINX configuration
 RUN sed -i '/user  nginx;/d' /etc/nginx/nginx.conf
 
-# Expose port 80
-EXPOSE 80
+# Update NGINX to listen on port 8080
+RUN sed -i 's/listen       80;/listen       8080;/g' /etc/nginx/conf.d/default.conf
+
+# Expose port 8080
+EXPOSE 8080
 
 # Start NGINX server
 CMD ["nginx", "-g", "daemon off;"]
 
+# Labelize
 LABEL org.opencontainers.image.source=https://github.com/missprempree/etax-frontend
