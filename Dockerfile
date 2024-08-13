@@ -23,11 +23,13 @@ FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Ensure NGINX runs with the necessary permissions
-RUN mkdir -p /var/cache/nginx && \
+RUN mkdir -p /var/cache/nginx/client_temp && \
     chown -R nginx:nginx /var/cache/nginx /usr/share/nginx/html
+#RUN mkdir -p /var/cache/nginx && \
+#    chown -R nginx:nginx /var/cache/nginx /usr/share/nginx/html
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 8080
 
 # Run NGINX as the nginx user
 USER nginx
