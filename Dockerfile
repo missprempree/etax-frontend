@@ -35,6 +35,9 @@ RUN sed -i 's/listen       80;/listen       8080;/g' /etc/nginx/conf.d/default.c
 # Expose port 8080
 EXPOSE 8080
 
+# Run NGINX as the nginx user
+USER nginx
+
 # Start NGINX server
 CMD ["nginx", "-g", "daemon off;"]
 
