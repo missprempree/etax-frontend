@@ -1,24 +1,28 @@
+--
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  creationTimestamp: null
   name: etax-frontend
   labels:
     app: etax-frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: etax-frontend
+  strategy: {}
   template:
     metadata:
+	  creationTimestamp: null
       labels:
         app: etax-frontend
     spec:
       containers:
-      - name: etax-frontend
-        image: docker.io/delenies/etax-frontend:latest
-        ports:
-        - containerPort: 8080
-        envFrom:
-        - configMapRef:
-            name: etax-frontend-config
+      - image: docker.io/delenies/etax-frontend:latest
+		name: etax-frontend
+		env:
+		- name: COLOR
+		  value: "blue:
+		resources: {}
+--
