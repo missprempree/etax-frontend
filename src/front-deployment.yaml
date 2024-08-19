@@ -20,9 +20,9 @@ spec:
     spec:
       containers:
       - image: docker.io/delenies/etax-frontend:latest
-		name: etax-frontend
-		env:
-		- name: COLOR
-		  value: "blue:
-		resources: {}
+	name: etax-frontend
+	env:
+	- name: COLOR
+	  value: "blue:
+	  resources: {}
 --
