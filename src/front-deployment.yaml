@@ -1,8 +1,6 @@
---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   name: etax-frontend
   labels:
     app: etax-frontend
@@ -11,18 +9,15 @@ spec:
   selector:
     matchLabels:
       app: etax-frontend
-  strategy: {}
   template:
     metadata:
-	  creationTimestamp: null
       labels:
         app: etax-frontend
     spec:
       containers:
       - image: docker.io/delenies/etax-frontend:latest
-	name: etax-frontend
-	env:
-	- name: COLOR
-	  value: "blue:
-	  resources: {}
---
+        name: etax-frontend
+        env:
+        - name: COLOR
+          value: "blue"
+        resources: {}
