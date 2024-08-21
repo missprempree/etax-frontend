@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: etax-frontend
-        image: etax-frontend-img:latest
+        image: docker.io/delenies/etax-frontend:latest
         resources:
           limits:
             memory: "128Mi"
