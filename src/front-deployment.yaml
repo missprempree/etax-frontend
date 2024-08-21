@@ -20,3 +20,12 @@ spec:
         ports:
         - containerPort: 80
         imagePullPolicy: Always
+        securityContext:
+          runAsUser: 0  # Ensure the container runs as root
+          allowPrivilegeEscalation: true
+        volumeMounts:
+        - name: tmp-volume
+          mountPath: /var/run  # Mount the /var/run directory
+      volumes:
+      - name: tmp-volume
+        emptyDir: {}  # Use an emptyDir volume for /var/run
