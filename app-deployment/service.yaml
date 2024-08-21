@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: etax-frontend-service
+spec:
+  selector:
+    app: etax-frontend
+  ports:
+  - port: 8080
+    targetPort: 8080
