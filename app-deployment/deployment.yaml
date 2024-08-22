@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
       - name: etax-frontend
-        image: ghcr.io/missprempree/etax-frontend/etax-frontend-img:latest
+        image: docker.pkg.github.com/missprempree/etax-frontend/etax-frontend-img:latest
         resources:
           limits:
             memory: "128Mi"
             cpu: "200m"
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
