@@ -2,10 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: etax-frontend
-  labels:
-    app: nginx
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: etax-frontend
@@ -19,7 +17,12 @@ spec:
         image: docker.pkg.github.com/missprempree/etax-frontend/etax-frontend-img:latest
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "200m"
+            memory: "1Gi"
+            cpu: "2"
+            ephemeral-storage: "500Mi"
         ports:
-        - containerPort: 3000
+          - containerPort: 3000
+      imagePullSecrets:
+        - name: etax-frontend-pull-secret
+      automountServiceAccountToken: false
+      serviceAccountName: cd-yatphiroon
