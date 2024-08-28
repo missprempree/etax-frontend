@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: etax-frontend-config
-  labels:
-    app: etax-frontend
-data:
-  # Add your environment variables here
-  REACT_APP_API_URL: "http://api.sdg-etax-poc.apps.dc1.test.local"
