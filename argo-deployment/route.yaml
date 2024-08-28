@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: etax-frontend-route
+spec:
+  to:
+    kind: Service
+    name: etax-frontend-service
+  port:
+    targetPort: 3000
