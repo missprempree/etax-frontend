@@ -8,3 +8,5 @@ spec:
     name: etax-frontend-service
   port:
     targetPort: 3000
+  tls:
+    termination: edge
