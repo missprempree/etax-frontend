@@ -8,7 +8,6 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // alert(inputValue+"!"); // Display the input value in an alert
     // You can perform further actions with the input value here
     axios({
         url: 'http://etax-new-project-yatphiroon.apps.dc1.test.local/api/v1/invoices/'+inputValue+'/export', 
