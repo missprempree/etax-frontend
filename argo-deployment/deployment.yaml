@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: etax-frontend
+  labels:
+    app: etax-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: etax-frontend
+  template:
+    metadata:
+      labels:
+        app: etax-frontend
+    spec:
+      containers:
+      - name: etax-frontend
+        image: docker.io/delenies/etax-frontend:latest
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "2"
+            ephemeral-storage: "500Mi"
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+        - name: docker-image-secret
