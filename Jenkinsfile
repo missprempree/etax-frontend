@@ -14,15 +14,15 @@ pipeline {
             }
         }
         
-        stage("Run Ansible Job Template"){
-            steps {
-                ansibleTower jobTemplate: 'yatphiroon-app-job-template', 
-                            jobType: 'run', 
-                            throwExceptionWhenFail: false, 
-                            towerCredentialsId: 'ansible', 
-                            towerLogLevel: 'false', 
-                            towerServer: 'cd-ansible'
-            }
-        }
+        # stage("Run Ansible Job Template"){
+        #   steps {
+        #       ansibleTower jobTemplate: 'yatphiroon-app-job-template', 
+        #                   jobType: 'run', 
+        #                   throwExceptionWhenFail: false, 
+        #                   towerCredentialsId: 'ansible', 
+        #                   towerLogLevel: 'false', 
+        #                   towerServer: 'cd-ansible'
+        #   }
+        #}
     }
 }
